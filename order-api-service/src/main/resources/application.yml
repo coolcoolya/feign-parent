@@ -13,7 +13,7 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
 
-#设置Feign客户端超时时间
+##设置Feign客户端超时时间，默认时间是1秒
 ribbon:
     #指的是建立连接所用时间，适用于网络状况正常的情况下，两段连接所用的时间
     ReadTimeout: 50000

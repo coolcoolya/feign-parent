@@ -3,16 +3,20 @@ package com.example.service;
 import com.example.BaseApiService;
 import com.example.MemberService;
 import com.example.ResponseBase;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MemberServiceImpl extends BaseApiService implements MemberService {
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @RequestMapping("/getMember")
     @Override
     public String getMember() {
-        return "订单服务调用会员服务";
+        return "订单服务调用会员服务,serverport :"+serverPort;
     }
 
     @RequestMapping("/getUserInfo")

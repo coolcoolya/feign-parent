@@ -9,4 +9,10 @@ public interface OrderService {
 
     @RequestMapping("/orderToMemberUserInfo")
     public ResponseBase orderToMemberUserInfo();
+
+    @RequestMapping("/orderToMemberUserInfoHystrix")
+    public ResponseBase orderToMemberUserInfoHystrix();
+
+    @RequestMapping("/orderInfo")
+    public ResponseBase orderInfo();
 }
