@@ -24,7 +24,8 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
     public ResponseBase getUserInfo() {
         try {
             //订单服务调用会员服务产生1.5s延时
-            Thread.sleep(1500);
+            Thread.sleep(5500);
+            System.out.println("1.5s后访问成功");
         }catch (Exception e){
 
         }

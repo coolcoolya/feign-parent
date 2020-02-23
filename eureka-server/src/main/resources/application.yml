@@ -1,0 +1,26 @@
+#注册中心端口号
+server:
+  port: 8100
+#注册中心ip地址
+eureka:
+  instance:
+    hostname: 127.0.0.1
+#客户端注册到注册中心的地址
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#因为自己是注册中心，不需要将自己注册给自己的注册中心（集群的时候需要设置为true）
+    register-with-eureka: false
+#因为自己是注册中心，不需要去检索服务信息
+    fetch-registry: false
+#在开发环境关闭eureka的自我保护机制，保证不可用服务及时剔除，生产环境需要开启。
+  server:
+    enable-self-preservation: false
+#间隔2s剔除一次，默认是60s（客户端需要配置：向服务端发送心跳的时间间隔，见member服务）
+    eviction-interval-timer-in-ms: 2000
+
+#一个注册中心，不需要spring.application.name，Eureka集群环境，必须有这个，并且名字必须相同
+spring:
+  application:
+    name: app-eureka
+

@@ -9,6 +9,7 @@
         <module>member-api</module>
         <module>order-api</module>
         <module>feign-common</module>
+        <module>eureka-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

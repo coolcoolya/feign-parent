@@ -19,3 +19,11 @@ ribbon:
     ReadTimeout: 50000
     #指的是建立连接后从服务器读取到可用资源所用的时间
     ConnectTimeout: 50000
+
+#hystrix禁止服务超时时间
+hystrix:
+  command:
+    default:
+      exception:
+        timeout:
+          enabled: false
