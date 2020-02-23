@@ -6,4 +6,7 @@ public interface OrderService {
 
     @RequestMapping("/orderToMember")
     public String orderToMember(String name);
+
+    @RequestMapping("/orderToMemberUserInfo")
+    public ResponseBase orderToMemberUserInfo();
 }

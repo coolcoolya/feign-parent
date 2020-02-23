@@ -6,4 +6,7 @@ public interface MemberService {
 
     @RequestMapping("/getMember")
     public String getMember();
+
+    @RequestMapping("/getUserInfo")
+    public ResponseBase getUserInfo();
 }
