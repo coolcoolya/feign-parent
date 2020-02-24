@@ -18,6 +18,19 @@
             <version>2.2.1.RELEASE</version>
         </dependency>
 
+        <!--将网关配置到git上，项目需要引入config-clientjar-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+            <version>2.2.1.RELEASE</version>
+        </dependency>
+
+        <!--监控中心，刷新配置文件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -10,16 +10,33 @@ eureka:
 spring:
   application:
     name: service-zuul
-zuul:
-  routes:
-    api-a:
-    #当客户端发送请求127.0.0.1:80/api-member开头的所有请求，都会转发到会员服务app-feign-member
-      path: /api-member/**
-      #会员服务别名，如果有多个会员服务，zuul网关默认整合了ribbon，自动实现负载均衡轮询效果
-      serviceId: app-feign-member
-    api-b:
-    #当客户端发送请求127.0.0.1:80/api-order开头的所有请求，都会转发到会员服务app-feign-order
-      path: /api-order/**
-      #订单服务别名
-      serviceId: app-feign-order
+#使用git去管理网关，git上新建一个service-zuul-dev.yml文件存放zuul信息
+  cloud:
+    config:
+    #读取版本环境 ,git上创建的文件名是service-zuul-dev.yml，这里的profile必须是dev（所以，命名必须规范，config客户端application名字-环境来命名）
+      profile: dev
+      discovery:
+        #读取config-server环境，为config-server的application name
+        service-id: config-server
+          #开启读取权限
+        enabled: true
+
+#添加actuator依赖后，暴露所有监控接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#zuul:
+#  routes:
+#    api-a:
+#    #当客户端发送请求127.0.0.1:80/api-member开头的所有请求，都会转发到会员服务app-feign-member
+#      path: /api-member/**
+#      #会员服务别名，如果有多个会员服务，zuul网关默认整合了ribbon，自动实现负载均衡轮询效果
+#      serviceId: app-feign-member
+#    api-b:
+#    #当客户端发送请求127.0.0.1:80/api-order开头的所有请求，都会转发到会员服务app-feign-order
+#      path: /api-order/**
+#      #订单服务别名
+#      serviceId: app-feign-order
 
