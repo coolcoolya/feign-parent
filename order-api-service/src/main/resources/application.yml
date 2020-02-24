@@ -25,7 +25,7 @@ feign:
   hystrix:
     enabled: true
 
-#hystrix禁止服务超时时间
+hystrix禁止服务超时时间
 hystrix:
   command:
     default:

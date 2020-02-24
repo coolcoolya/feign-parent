@@ -15,3 +15,6 @@ management:
 3.引用配置的类上加上注解：@RefreshScope
 
 4.git上面修改配置后，手动调用 http://localhost:8882/actuator/refresh 接口进行刷新，刷新后，客户端引用的配置都是最新的配置了。
+
+
+注:网上很多地方将config-client的配置文件内容放到bootstrap.yml文件中的，经测试，放到bootstrap.yml或者application.yml文件都可以。

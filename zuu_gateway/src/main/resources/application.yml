@@ -1,0 +1,25 @@
+#api网关端口号
+server:
+  port: 80
+#服务注册地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+#网关名称
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    api-a:
+    #当客户端发送请求127.0.0.1:80/api-member开头的所有请求，都会转发到会员服务app-feign-member
+      path: /api-member/**
+      #会员服务别名，如果有多个会员服务，zuul网关默认整合了ribbon，自动实现负载均衡轮询效果
+      serviceId: app-feign-member
+    api-b:
+    #当客户端发送请求127.0.0.1:80/api-order开头的所有请求，都会转发到会员服务app-feign-order
+      path: /api-order/**
+      #订单服务别名
+      serviceId: app-feign-order
+

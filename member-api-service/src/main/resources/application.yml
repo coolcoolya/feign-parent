@@ -25,7 +25,7 @@ spring:
         service-id: config-server
         #开启读取权限
         enabled: true
-#配合手动刷新使用，暴露所有接口，使得git上修改配置后，手动调用member服务的这个方法刷新配置 http://ip:port/actuator/refresh
+#配合手动刷新使用，暴露所有监控中心接口，使得git上修改配置后，手动调用member服务的这个方法刷新配置 http://ip:port/actuator/refresh
 management:
   endpoints:
     web:
