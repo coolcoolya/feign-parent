@@ -1,8 +1,6 @@
 server:
   port: 8000
-spring:
-  application:
-    name: app-feign-member
+
 eureka:
   client:
     service-url:
@@ -12,3 +10,24 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
+
+spring:
+  application:
+    name: app-feign-member
+     #读取git配置文件信息
+     #因为这里的applicationname是app-feign-member，所以会读取git上，名字为app-feign-member-dev的配置文件，通过命名规则，也就说明了，一个服务对应了一个配置文件。
+  cloud:
+    config:
+    #读取版本环境 ,git上创建的文件名是app-feign-member-dev.properties，这里的profile必须是dev（所以，命名必须规范，config客户端application名字-环境来命名）
+      profile: dev
+      discovery:
+      #读取config-server环境，为config-server的application name
+        service-id: config-server
+        #开启读取权限
+        enabled: true
+#配合手动刷新使用，暴露所有接口，使得git上修改配置后，手动调用member服务的这个方法刷新配置 http://ip:port/actuator/refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

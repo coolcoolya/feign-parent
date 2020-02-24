@@ -12,11 +12,24 @@
     <artifactId>member-api-service</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>member-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--memeber服务也需要读取配置中心，加上config-client依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+            <version>2.2.1.RELEASE</version>
+        </dependency>
+        <!--引入监控依赖，手动刷新-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

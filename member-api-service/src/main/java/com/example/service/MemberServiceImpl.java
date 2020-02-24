@@ -4,9 +4,11 @@ import com.example.BaseApiService;
 import com.example.MemberService;
 import com.example.ResponseBase;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RefreshScope
 @RestController
 public class MemberServiceImpl extends BaseApiService implements MemberService {
 
@@ -30,5 +32,13 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
 
         }
         return setResultSuccess("订单服务接口调用会员服务接口成功...");
+    }
+
+    @Value("${membername}")
+    private String name;
+
+    @RequestMapping("/getName")
+    public String getName(){
+        return "会员服务读取configServer配置，name："+name;
     }
 }
