@@ -3,11 +3,13 @@ package com.example.service;
 import com.example.BaseApiService;
 import com.example.MemberService;
 import com.example.ResponseBase;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api("会员服务")
 @RefreshScope
 @RestController
 public class MemberServiceImpl extends BaseApiService implements MemberService {

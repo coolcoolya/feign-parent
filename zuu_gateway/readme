@@ -1,0 +1,43 @@
+使用Zuul+Swagger实现管理整个微服务API文档
+订单服务、会员服务、支付服务
+1 在每个服务加入swagger依赖
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>1.9.1.RELEASE</version>
+        </dependency>
+2 在每个服务的application.yml文件中加入，swagger扫包范围
+swagger:
+  base-package: com.example
+
+3.在每个服务的启动类上加入注解：@EnableSwagger2Doc
+
+4.在网关中加入swagger依赖
+
+5.在网关的启动类中加入注解@EnableSwagger2Doc
+
+6.在网关的启动类中加入，如下代码，添加文档来源：
+
+    @Component
+    @Primary
+    class DocumentationConfig implements SwaggerResourcesProvider{
+        @Override
+        public List<SwaggerResource> get() {
+            List resources = new ArrayList();
+            resources.add(swaggerResource("会员服务名字随便起","/api-member/v2/api-docs","2.0"));// /api-member/这个是网关过滤路径，跟网关配置文件的路径一样
+            resources.add(swaggerResource("订单服务名字随便起","/api-order/v2/api-docs","2.0"));
+            resources.add(swaggerResource("支付服务名字随便起","/api-pay/v2/api-docs","2.0"));
+            return resources;
+        }
+
+        private SwaggerResource swaggerResource(String name,String location,String version){
+            SwaggerResource swaggerResource = new SwaggerResource();
+            swaggerResource.setName(name);
+            swaggerResource.setLocation(location);
+            swaggerResource.setSwaggerVersion(version);
+            return swaggerResource;
+        }
+    }
+
+7.重启服务，访问
+http://127.0.0.1:80/swagger-ui.html

@@ -5,10 +5,12 @@ import com.example.OrderService;
 import com.example.ResponseBase;
 import com.example.feign.MemberFeign;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api("订单服务")
 @RestController
 public class OrderServiceImpl extends BaseApiService implements OrderService {
 

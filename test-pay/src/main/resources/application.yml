@@ -15,3 +15,6 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
+#swagger生成文档，扫包范围
+swagger:
+  base-package: com.example

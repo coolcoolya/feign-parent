@@ -31,3 +31,7 @@ management:
     web:
       exposure:
         include: '*'
+
+#swagger生成文档，扫包范围
+swagger:
+  base-package: com.example

@@ -25,10 +25,14 @@ feign:
   hystrix:
     enabled: true
 
-hystrix禁止服务超时时间
+#hystrix禁止服务超时时间
 hystrix:
   command:
     default:
       exception:
         timeout:
           enabled: false
+
+#swagger生成文档，扫包范围
+swagger:
+  base-package: com.example
