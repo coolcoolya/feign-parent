@@ -1,0 +1,21 @@
+#服务端口号
+server:
+  port: 8882
+#git上创建的文件名是configClient-dev.properties，这里的applicationname必须是configClient
+spring:
+  application:
+    name: configClient
+  cloud:
+    config:
+    #读取版本环境 ,git上创建的文件名是configClient-dev.properties，这里的profile必须是dev（所以，命名必须规范，config客户端application名字-环境来命名）
+      profile: dev
+      discovery:
+      #读取config-server环境，为config-server的application name
+        service-id: config-server
+        #开启读取权限
+        enabled: true
+#注册中心地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
