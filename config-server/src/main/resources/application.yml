@@ -1,0 +1,24 @@
+#服务端口号
+server:
+  port: 8888
+#eureka注册中心地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8100/eureka/
+#服务注册名称
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+        #config-server读取git地址
+          uri: https://github.com/coolcoolya/configFile.git
+          #/**读取根目录下所有文件  /abc 读取根目录以及根目录下abc文件夹下面的文件  /读取根目录的文件
+          search-paths: /**
+          #仓库分支
+          default-label: master
+          #可以指定配置文件拉到本地的目录位置(例如：Adding property source: file:/F:/workspacetrunk/feign-parent/target/config/configClient-dev.properties)
+          basedir: target/config
