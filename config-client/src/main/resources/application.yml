@@ -19,3 +19,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8100/eureka
+#添加actuator依赖后，暴露所有的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

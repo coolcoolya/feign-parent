@@ -1,0 +1,17 @@
+手动刷新，人工调用接口，读取最新的配置文件
+1.config-client，引入监控依赖
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+2.配置文件暴露actuator所有端点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+3.引用配置的类上加上注解：@RefreshScope
+
+4.git上面修改配置后，手动调用 http://localhost:8882/actuator/refresh 接口进行刷新，刷新后，客户端引用的配置都是最新的配置了。
