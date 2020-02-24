@@ -20,6 +20,11 @@ ribbon:
     #指的是建立连接后从服务器读取到可用资源所用的时间
     ConnectTimeout: 50000
 
+##开起Hystrix断路器
+feign:
+  hystrix:
+    enabled: true
+
 #hystrix禁止服务超时时间
 hystrix:
   command:

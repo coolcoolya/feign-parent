@@ -45,6 +45,14 @@ public class OrderServiceImpl extends BaseApiService implements OrderService {
         return setResultSuccess("返回一个友好提示：服务降级，服务器忙，请稍后重试!");
     }
 
+    //Hystrix，服务降级方法，第二种写法，使用类的方式
+    @RequestMapping("/orderToMemberUserInfoHystrixDemo2")
+    public ResponseBase orderToMemberUserInfoHystrixDemo2(){
+        System.out.println("orderToMemberUserInfoHystrix线程池名称："+Thread.currentThread().getName());
+        return memberFeign.getUserInfo();
+    }
+
+
     @RequestMapping("/orderInfo")
     @Override
     public ResponseBase orderInfo() {
