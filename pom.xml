@@ -13,6 +13,7 @@
         <module>config-server</module>
         <module>config-client</module>
         <module>zuu_gateway</module>
+        <module>test-pay</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
